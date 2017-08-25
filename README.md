@@ -11,9 +11,10 @@ NSString 转换成其他的类型的方法floatValue  intValue等<br />
 fomat中 %.3f  小数点后三位<br />
 
 在拖拽之后 发生了一个异常 就是 我声明的控件的实力 我想更改名字  改完之后出现了错误<br/>
-**'NSUnknownKeyException', reason: '[<UIViewController 0x3927310> setValue:forUndefinedKey:]: <br/>
-this class is not key value coding-compliant for the key string**
-就是因为 他们还在关联着 所以我们需要在 链接监测器上 接触 他们的关联
+**'NSUnknownKeyException', reason: '**
+**[<UIViewController 0x3927310> setValue:forUndefinedKey:]: **<br/>
+**this class is not key value coding-compliant for the key string**
+就是因为 他们还在关联着 所以我们需要在 链接监测器上解除 他们的关联
 
 ![image](https://github.com/xuhuawei131/MyIOSApp2/blob/master/raw/master/Screenshots/errorSolve.png)
 
