@@ -24,12 +24,46 @@
     float height=[self.editHeight.text floatValue];
     
     
+    BOOL isError=[self checkoutParamR:r Height:height];
+    
+    if (isError) {
+        return;
+    }
+    
     float s=3.1415*r*r;
     float v=s*height;
+    
+    
     
     NSString* result=[[NSString alloc] initWithFormat:@"面积:%.3f\n体积:%.3f",s,v ];
     self.textResult.text=result;
 }
+
+-(BOOL)checkoutParamR:(float)r Height:(float)h{
+    BOOL isError=FALSE;
+    NSMutableString* errorStr=[[NSMutableString alloc]initWithString:@"参数错误："];
+    if(r<=0)
+    {
+        isError=TRUE;
+        [errorStr appendString:@"半径必须大于0"];
+    }
+    if(h<=0){
+        isError=TRUE;
+        [errorStr appendString:@"高度必须大于0"];
+    }
+    if(isError){
+        self.textResult.text=errorStr;
+        UIColor* redColor=[[UIColor alloc]initWithRed:1 green:.5 blue:0 alpha:1];
+        self.textResult.textColor=redColor;
+    }else{
+        UIColor* greenColor=[[UIColor alloc]initWithRed:0 green:1 blue:0 alpha:1];
+        self.textResult.text=@"";
+        self.textResult.textColor=greenColor;
+    }
+    
+    return isError;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
